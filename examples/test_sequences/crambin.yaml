@@ -1,0 +1,8 @@
+# Crambin - Small plant protein (46 residues)
+# PDB: 1CRN
+# Excellent test case: small, well-characterized, has disulfide bonds
+version: 1
+sequences:
+  - protein:
+      id: crambin
+      sequence: TTCCPSIVARSNFNVCRLPGTPEAICATYTGCIIIPGATCPGDYAN

@@ -1,0 +1,11 @@
+# Hen egg-white lysozyme (129 residues)
+# PDB: 1LYZ
+# Classic enzyme, well-studied stability mutants
+version: 1
+sequences:
+  - protein:
+      id: lysozyme
+      sequence: >
+        KVFGRCELAAAMKRHGLDNYRGYSLGNWVCAAKFESNFNTQATNRNTDGSTDYGILQINS
+        RWWCNDGRTPGSRNLCNIPCSALLSSDITASVNCAKKIVSDGNGMNAWVAWRNRCKGTDV
+        QAWIRGCRL

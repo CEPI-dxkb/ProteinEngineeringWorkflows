@@ -1,0 +1,13 @@
+# Example job file for protein stability pipeline (Boltz)
+# Medium protein test case: lysozyme (129 residues)
+
+sequence_file:
+  class: File
+  path: test_sequences/lysozyme.yaml
+
+use_msa_server: true  # Recommended for better accuracy
+recycling_steps: 3
+diffusion_samples: 1
+predict_affinity: false
+analysis_type: both
+output_format: pdb

@@ -1,0 +1,13 @@
+# Example job file for protein stability pipeline (Boltz)
+# Small protein test case: crambin (46 residues)
+
+sequence_file:
+  class: File
+  path: test_sequences/crambin.yaml
+
+use_msa_server: false  # Fast for small proteins
+recycling_steps: 3
+diffusion_samples: 1
+predict_affinity: false
+analysis_type: both
+output_format: pdb

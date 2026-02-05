@@ -1,0 +1,12 @@
+# Example job file for protein stability pipeline (Chai-1)
+# Small protein test case: crambin (46 residues)
+
+sequence_file:
+  class: File
+  path: test_sequences/crambin.fasta
+
+use_msa_server: false  # Fast for small proteins
+use_templates: false
+num_samples: 1
+analysis_type: both
+output_format: pdb
