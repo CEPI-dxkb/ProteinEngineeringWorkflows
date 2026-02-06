@@ -1,0 +1,42 @@
+# CWL cache and outputs
+.cwltool_cache/
+cwl_cache/
+*.cwloutput/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+*.egg
+.venv/
+venv/
+env/
+
+# Test outputs
+test_output/
+*.tmp
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+
+# Large structure files (add manually if needed)
+*.pdb
+*.cif
+*.mmcif
+
+# Temporary files
+tmp/
+temp/
