@@ -26,6 +26,7 @@ Sequence → Structure Prediction → Stability Analysis → Engineering Candida
 | `protein_stability_pipeline.cwl` | `boltz` | `stabilinnator` (dynamic) | Simple usage, single analysis |
 | `protein_stability_with_chai.cwl` | `chai-lab` | `stabilinnator` (dynamic) | Chai-1 alternative |
 | `protein_stability_explicit.cwl` | `boltz` | `prolinnator` + `disulfinnate` | Explicit parallel analysis |
+| `protein_stability_explicit_chai.cwl` | `chai-lab` | `prolinnator` + `disulfinnate` | Chai-1 explicit parallel |
 | `protein_stability_app.cwl` | `App-Boltz.pl` | `App-StabiliNNator.pl` × 2 | BV-BRC integration |
 
 ## Quick Start
@@ -42,6 +43,9 @@ cwltool cwl/workflows/protein_stability_with_chai.cwl examples/crambin_fasta_job
 
 # Run explicit workflow (parallel proline + disulfide analysis)
 cwltool cwl/workflows/protein_stability_explicit.cwl examples/crambin_job.yml
+
+# Run Chai-1 explicit workflow
+cwltool cwl/workflows/protein_stability_explicit_chai.cwl examples/crambin_fasta_job.yml
 
 # Run BV-BRC App script workflow
 cwltool cwl/workflows/protein_stability_app.cwl examples/crambin_job.yml
@@ -94,6 +98,7 @@ ProteinEngineeringWorkflows/
 │       ├── protein_stability_pipeline.cwl      # Boltz → stabiliNNator
 │       ├── protein_stability_with_chai.cwl     # Chai-1 → stabiliNNator
 │       ├── protein_stability_explicit.cwl      # Boltz → prolinnator + disulfinnate
+│       ├── protein_stability_explicit_chai.cwl # Chai-1 → prolinnator + disulfinnate
 │       └── protein_stability_app.cwl           # BV-BRC App script workflow
 ├── examples/
 │   ├── crambin_job.yml
