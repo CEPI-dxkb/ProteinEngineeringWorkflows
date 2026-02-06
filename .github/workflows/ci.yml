@@ -1,0 +1,76 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate-cwl:
+    name: Validate CWL
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install cwltool
+        run: |
+          pip install cwltool PyYAML
+
+      - name: Validate CWL tools
+        run: |
+          echo "Validating CWL tool definitions..."
+          for tool in cwl/tools/*.cwl; do
+            echo "  Validating: $tool"
+            cwltool --validate "$tool"
+          done
+
+      - name: Validate CWL workflows
+        run: |
+          echo "Validating CWL workflow definitions..."
+          for workflow in cwl/workflows/*.cwl; do
+            echo "  Validating: $workflow"
+            cwltool --validate "$workflow"
+          done
+
+      - name: Validate example job files
+        run: |
+          echo "Validating example YAML files..."
+          python3 -c "
+          import yaml
+          import sys
+          import glob
+
+          errors = []
+          for job_file in glob.glob('examples/*.yml'):
+              try:
+                  with open(job_file) as f:
+                      yaml.safe_load(f)
+                  print(f'  Valid: {job_file}')
+              except Exception as e:
+                  errors.append(f'{job_file}: {e}')
+                  print(f'  Invalid: {job_file}')
+
+          if errors:
+              print('\nErrors:')
+              for err in errors:
+                  print(f'  {err}')
+              sys.exit(1)
+          "
+
+      - name: Summary
+        run: |
+          echo "## CWL Validation Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Type | Count |" >> $GITHUB_STEP_SUMMARY
+          echo "|------|-------|" >> $GITHUB_STEP_SUMMARY
+          echo "| Tools | $(ls cwl/tools/*.cwl | wc -l) |" >> $GITHUB_STEP_SUMMARY
+          echo "| Workflows | $(ls cwl/workflows/*.cwl | wc -l) |" >> $GITHUB_STEP_SUMMARY
+          echo "| Examples | $(ls examples/*.yml | wc -l) |" >> $GITHUB_STEP_SUMMARY

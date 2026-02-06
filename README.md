@@ -1,5 +1,8 @@
 # Protein Engineering Workflows
 
+[![CI](https://github.com/CEPI-dxkb/ProteinEngineeringWorkflows/actions/workflows/ci.yml/badge.svg)](https://github.com/CEPI-dxkb/ProteinEngineeringWorkflows/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 CWL workflows combining protein structure prediction and stability analysis for protein engineering applications.
 
 ## Overview
